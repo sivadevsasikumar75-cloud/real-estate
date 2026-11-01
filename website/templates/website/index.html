@@ -1,0 +1,450 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block page_title %}HILLTOP REAL ESTATE | Premium Indian Real Estate Marketplace{% endblock %}
+{% block page_description %}HILLTOP is India's premier real estate marketplace to buy, rent, and sell verified apartments, luxury villas, and plots across Kochi, Bengaluru, Mumbai, Hyderabad and Delhi NCR.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container-xl">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 shadow-sm text-uppercase">
+                        <i class="bi bi-patch-check-fill me-1"></i> India's Trusted Property Marketplace
+                    </span>
+                    <h1 class="display-4 fw-extrabold mb-3">Find Your Perfect Property in India</h1>
+                    <p class="lead text-white-50 mb-4 px-md-4">
+                        Discover verified homes, luxury villas, and rental apartments across Kochi, Bengaluru, Mumbai, Hyderabad, and Delhi NCR with transparent pricing and zero hassle.
+                    </p>
+
+                    <!-- Hero Search Box -->
+                    <div class="hero-search-box text-start">
+                        <!-- Search Tabs -->
+                        <div class="d-flex gap-2 mb-3 border-bottom pb-2">
+                            <div class="form-check form-check-inline m-0">
+                                <input class="btn-check" type="radio" name="heroPurpose" id="purposeBuy" value="buy" checked>
+                                <label class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-semibold" for="purposeBuy">
+                                    <i class="bi bi-bag-check me-1"></i> Buy Property
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline m-0">
+                                <input class="btn-check" type="radio" name="heroPurpose" id="purposeRent" value="rent">
+                                <label class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-semibold" for="purposeRent">
+                                    <i class="bi bi-key me-1"></i> Rent Property
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Search Form -->
+                        <form id="heroSearchForm" class="row g-2 align-items-end">
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label text-muted small fw-bold mb-1"><i class="bi bi-geo-alt text-danger"></i> Select City</label>
+                                <select class="form-select bg-light" id="heroCity">
+                                    <option value="">All Major Cities</option>
+                                    <option value="Kochi">Kochi (Cochin)</option>
+                                    <option value="Bengaluru">Bengaluru (Bangalore)</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                                    <option value="Kozhikode">Kozhikode (Calicut)</option>
+                                    <option value="Kottayam">Kottayam</option>
+                                    <option value="Delhi NCR">Delhi NCR (Gurugram/Noida)</option>
+                                    <option value="Chennai">Chennai</option>
+                                    <option value="Pune">Pune</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label text-muted small fw-bold mb-1"><i class="bi bi-houses text-primary"></i> Property Type</label>
+                                <select class="form-select bg-light" id="heroType">
+                                    <option value="">All Types</option>
+                                    <option value="Apartment">Apartment / Flat</option>
+                                    <option value="Independent Villa">Independent Villa</option>
+                                    <option value="Penthouse">Luxury Penthouse</option>
+                                    <option value="Studio">Studio Apartment</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label text-muted small fw-bold mb-1"><i class="bi bi-cash-stack text-success"></i> Budget (INR)</label>
+                                <select class="form-select bg-light" id="heroBudget">
+                                    <option value="">Any Budget</option>
+                                    <option value="under-50l">Under ₹50 Lakhs</option>
+                                    <option value="50l-1cr">₹50 Lakhs - ₹1 Crore</option>
+                                    <option value="1cr-2cr">₹1 Crore - ₹2 Crore</option>
+                                    <option value="above-2cr">Above ₹2 Crore</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <button type="submit" class="btn btn-navy w-100 py-2 rounded-3 fw-bold d-flex align-items-center justify-content-center gap-2 shadow-sm">
+                                    <i class="bi bi-search"></i> Search Properties
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Quick City Tags -->
+                    <div class="d-flex flex-wrap justify-content-center gap-2 mt-3 pt-2">
+                        <span class="text-white-50 small my-auto">Popular:</span>
+                        <a href="{% url 'buy' %}?city=Kochi" class="badge bg-white bg-opacity-25 text-white text-decoration-none px-3 py-1 rounded-pill">Kochi Marine Drive</a>
+                        <a href="{% url 'buy' %}?city=Bengaluru" class="badge bg-white bg-opacity-25 text-white text-decoration-none px-3 py-1 rounded-pill">Bengaluru Tech Hubs</a>
+                        <a href="{% url 'buy' %}?city=Mumbai" class="badge bg-white bg-opacity-25 text-white text-decoration-none px-3 py-1 rounded-pill">Mumbai Sea View</a>
+                        <a href="{% url 'rent' %}?city=Hyderabad" class="badge bg-white bg-opacity-25 text-white text-decoration-none px-3 py-1 rounded-pill">Gachibowli Rentals</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Marketplace Statistics -->
+    <section class="py-4 bg-white border-bottom shadow-sm">
+        <div class="container-xl">
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-3">
+                    <h3 class="fw-bold text-primary mb-1">₹2,800+ Cr</h3>
+                    <p class="text-muted small mb-0">Property Value Transacted</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h3 class="fw-bold text-primary mb-1">16,500+</h3>
+                    <p class="text-muted small mb-0">Verified Indian Homes Listed</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h3 class="fw-bold text-primary mb-1">10+ Metros</h3>
+                    <p class="text-muted small mb-0">Pan-India Presence</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h3 class="fw-bold text-primary mb-1">99.2%</h3>
+                    <p class="text-muted small mb-0">Customer Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Categories -->
+    <section class="py-5 bg-light-subtle-custom">
+        <div class="container-xl">
+            <div class="row align-items-end mb-4">
+                <div class="col-md-8">
+                    <span class="badge bg-primary-subtle text-primary fw-bold text-uppercase px-3 py-1 rounded-pill mb-2">Explore By Category</span>
+                    <h2 class="fw-bold">Find Properties That Match Your Lifestyle</h2>
+                    <p class="text-muted mb-0">From budget-friendly city flats to sprawling luxury estates, discover verified homes suited for your family.</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <a href="{% url 'buy' %}" class="btn btn-outline-primary rounded-pill px-4 fw-semibold">
+                        View All Categories <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-6 col-lg-3">
+                    <a href="{% url 'buy' %}?type=Apartment" class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center text-decoration-none feature-box">
+                        <div class="feature-icon-wrapper mx-auto">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-1">Apartments</h5>
+                        <small class="text-muted">1, 2, 3 & 4 BHK High-Rises</small>
+                    </a>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <a href="{% url 'buy' %}?type=Independent Villa" class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center text-decoration-none feature-box">
+                        <div class="feature-icon-wrapper mx-auto">
+                            <i class="bi bi-house-door"></i>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-1">Independent Villas</h5>
+                        <small class="text-muted">Gated Enclaves & Plantations</small>
+                    </a>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <a href="{% url 'buy' %}?type=Penthouse" class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center text-decoration-none feature-box">
+                        <div class="feature-icon-wrapper mx-auto">
+                            <i class="bi bi-stars"></i>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-1">Penthouses</h5>
+                        <small class="text-muted">Skyline Luxury Residences</small>
+                    </a>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <a href="{% url 'rent' %}" class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center text-decoration-none feature-box">
+                        <div class="feature-icon-wrapper mx-auto">
+                            <i class="bi bi-key"></i>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-1">Rental Homes</h5>
+                        <small class="text-muted">Ready-to-Move Furnished Flats</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties Section -->
+    <section class="py-5 bg-white">
+        <div class="container-xl">
+            <div class="row align-items-end mb-4">
+                <div class="col-md-8">
+                    <span class="badge bg-warning-subtle text-dark border border-warning fw-bold text-uppercase px-3 py-1 rounded-pill mb-2">
+                        <i class="bi bi-star-fill text-warning me-1"></i> Handpicked Collection
+                    </span>
+                    <h2 class="fw-bold">Featured Properties Across India</h2>
+                    <p class="text-muted mb-0">RERA verified projects with premium amenities, prime connectivity, and transparent pricing in INR.</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <a href="{% url 'buy' %}" class="btn btn-navy rounded-pill px-4 fw-semibold">
+                        Explore All Properties <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dynamic Featured Properties Grid -->
+            <div class="row" id="featuredPropertiesList">
+                <!-- Injected via main.js from PropertyStore -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Indian Cities -->
+    <section class="py-5 bg-light-subtle-custom border-top border-bottom">
+        <div class="container-xl">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="badge bg-primary text-white fw-bold text-uppercase px-3 py-1 rounded-pill mb-2">Prime Metros</span>
+                <h2 class="fw-bold">Explore Properties by Popular Cities</h2>
+                <p class="text-muted">Find luxury residences, tech-corridor apartments, and scenic holiday homes in India's fastest-growing real estate hubs.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Kochi -->
+                <div class="col-md-4 col-sm-6">
+                    <a href="{% url 'buy' %}?city=Kochi" class="city-card d-block text-decoration-none">
+                        <img src="{% static 'images/header.jpg' %}" alt="Kochi Real Estate">
+                        <div class="city-card-overlay">
+                            <span class="badge bg-warning text-dark w-max mb-1">Kerala</span>
+                            <h4 class="fw-bold mb-0">Kochi (Cochin)</h4>
+                            <small class="text-white-50">Marine Drive • Kakkanad • Panampilly</small>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Bengaluru -->
+                <div class="col-md-4 col-sm-6">
+                    <a href="{% url 'buy' %}?city=Bengaluru" class="city-card d-block text-decoration-none">
+                        <img src="{% static 'images/carousel-2.jpg' %}" alt="Bengaluru Real Estate">
+                        <div class="city-card-overlay">
+                            <span class="badge bg-info text-dark w-max mb-1">Karnataka</span>
+                            <h4 class="fw-bold mb-0">Bengaluru</h4>
+                            <small class="text-white-50">Whitefield • Indiranagar • Electronic City</small>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Mumbai -->
+                <div class="col-md-4 col-sm-6">
+                    <a href="{% url 'buy' %}?city=Mumbai" class="city-card d-block text-decoration-none">
+                        <img src="{% static 'images/property-4.jpg' %}" alt="Mumbai Real Estate">
+                        <div class="city-card-overlay">
+                            <span class="badge bg-danger w-max mb-1">Maharashtra</span>
+                            <h4 class="fw-bold mb-0">Mumbai</h4>
+                            <small class="text-white-50">Bandra • Powai • Worli • Andheri</small>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Hyderabad -->
+                <div class="col-md-4 col-sm-6">
+                    <a href="{% url 'buy' %}?city=Hyderabad" class="city-card d-block text-decoration-none">
+                        <img src="{% static 'images/property-6.jpg' %}" alt="Hyderabad Real Estate">
+                        <div class="city-card-overlay">
+                            <span class="badge bg-primary w-max mb-1">Telangana</span>
+                            <h4 class="fw-bold mb-0">Hyderabad</h4>
+                            <small class="text-white-50">Gachibowli • Hitec City • Jubilee Hills</small>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Thiruvananthapuram -->
+                <div class="col-md-4 col-sm-6">
+                    <a href="{% url 'buy' %}?city=Thiruvananthapuram" class="city-card d-block text-decoration-none">
+                        <img src="{% static 'images/property-5.jpg' %}" alt="Trivandrum Real Estate">
+                        <div class="city-card-overlay">
+                            <span class="badge bg-success w-max mb-1">Capital City</span>
+                            <h4 class="fw-bold mb-0">Thiruvananthapuram</h4>
+                            <small class="text-white-50">Kowdiar • Kazhakkoottam • Technopark</small>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Delhi NCR -->
+                <div class="col-md-4 col-sm-6">
+                    <a href="{% url 'buy' %}?city=Delhi NCR" class="city-card d-block text-decoration-none">
+                        <img src="{% static 'images/11.jpg' %}" alt="Delhi NCR Real Estate">
+                        <div class="city-card-overlay">
+                            <span class="badge bg-secondary w-max mb-1">National Capital</span>
+                            <h4 class="fw-bold mb-0">Delhi NCR</h4>
+                            <small class="text-white-50">Gurugram Golf Course Rd • Noida Sector 62</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose HILLTOP -->
+    <section class="py-5 bg-white">
+        <div class="container-xl">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="badge bg-primary-subtle text-primary fw-bold text-uppercase px-3 py-1 rounded-pill mb-2">Our Advantage</span>
+                <h2 class="fw-bold">Why Thousands of Indians Trust HILLTOP</h2>
+                <p class="text-muted">Buying or leasing property in India is a major lifetime decision. Here is how we ensure seamless transparency and security.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-3 col-sm-6">
+                    <div class="p-4 bg-light rounded-4 h-100 border text-center">
+                        <div class="feature-icon-wrapper mx-auto bg-primary-subtle text-primary">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">RERA Registered Focus</h5>
+                        <p class="text-muted small mb-0">We emphasize verified legal approvals, title deed checks, and standard state RERA registration references.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="p-4 bg-light rounded-4 h-100 border text-center">
+                        <div class="feature-icon-wrapper mx-auto bg-success-subtle text-success">
+                            <i class="bi bi-tag"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Zero Brokerage Options</h5>
+                        <p class="text-muted small mb-0">Direct owner-to-buyer and tenant listings with transparent Indian Rupee pricing and no hidden commissions.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="p-4 bg-light rounded-4 h-100 border text-center">
+                        <div class="feature-icon-wrapper mx-auto bg-info-subtle text-info">
+                            <i class="bi bi-person-badge"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Verified Owners & Agents</h5>
+                        <p class="text-muted small mb-0">All demo sellers and regional partner advisors undergo phone and document profile validation.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="p-4 bg-light rounded-4 h-100 border text-center">
+                        <div class="feature-icon-wrapper mx-auto bg-warning-subtle text-warning">
+                            <i class="bi bi-file-earmark-ruled"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">End-to-End Assistance</h5>
+                        <p class="text-muted small mb-0">From site visits and bank home loan guidance to registration agreement drafting support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recently Added Properties -->
+    <section class="py-5 bg-light-subtle-custom">
+        <div class="container-xl">
+            <div class="row align-items-end mb-4">
+                <div class="col-md-8">
+                    <span class="badge bg-success-subtle text-success fw-bold text-uppercase px-3 py-1 rounded-pill mb-2">Fresh Arrivals</span>
+                    <h2 class="fw-bold">Recently Listed Properties</h2>
+                    <p class="text-muted mb-0">Explore the freshest additions to the HILLTOP Indian property marketplace.</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <a href="{% url 'buy' %}?sort=newest" class="btn btn-outline-primary rounded-pill px-4 fw-semibold">
+                        View All Recent <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dynamic Recent Properties Grid -->
+            <div class="row" id="recentPropertiesList">
+                <!-- Injected via main.js from PropertyStore -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="py-5 bg-white border-top">
+        <div class="container-xl">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="badge bg-info-subtle text-info fw-bold text-uppercase px-3 py-1 rounded-pill mb-2">Stories of Trust</span>
+                <h2 class="fw-bold">What Our Clients Say</h2>
+                <p class="text-muted">Real experiences from Indian homebuyers, corporate tenants, and property investors.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex text-warning mb-3">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="text-muted small fst-italic mb-3">
+                            "Finding a sea-facing 3 BHK in Marine Drive, Kochi without brokerage hassles seemed impossible until we used HILLTOP. The verified photos and accurate carpet area specs were exactly as presented on site."
+                        </p>
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="{% static 'images/testimonial-1.jpg' %}" alt="George Thomas" class="testimonial-avatar" onerror="this.src='{% static 'images/team-1.jpg' %}'">
+                            <div>
+                                <h6 class="fw-bold mb-0">George & Susan Thomas</h6>
+                                <small class="text-muted">Purchased 3 BHK • Kochi</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex text-warning mb-3">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="text-muted small fst-italic mb-3">
+                            "Relocating from Hyderabad to Whitefield Bengaluru was stressful. With HILLTOP's rental filters, I filtered flats by distance to tech parks and secured a fully furnished home within 48 hours."
+                        </p>
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="{% static 'images/testimonial-2.jpg' %}" alt="Ananya Sundaram" class="testimonial-avatar" onerror="this.src='{% static 'images/team-2.jpg' %}'">
+                            <div>
+                                <h6 class="fw-bold mb-0">Ananya Sundaram</h6>
+                                <small class="text-muted">Tenant • Electronic City Bengaluru</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex text-warning mb-3">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="text-muted small fst-italic mb-3">
+                            "Listed my ancestral villa in Kottayam on HILLTOP's demo platform. The clean UI and detailed amenity checklist made listing our property effortless. The presentation standard is truly top notch."
+                        </p>
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="{% static 'images/testimonial-3.jpg' %}" alt="Manoj Nair" class="testimonial-avatar" onerror="this.src='{% static 'images/team-3.jpg' %}'">
+                            <div>
+                                <h6 class="fw-bold mb-0">Manoj & Shylaja Nair</h6>
+                                <small class="text-muted">Property Sellers • Kottayam</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="py-5" style="background: linear-gradient(135deg, #0B2545 0%, #133a6b 100%);">
+        <div class="container-xl">
+            <div class="row align-items-center">
+                <div class="col-lg-8 text-center text-lg-start mb-4 mb-lg-0">
+                    <h2 class="text-white fw-bold mb-2">Looking to Sell or Rent Your Property in India?</h2>
+                    <p class="text-white-50 mb-0">List your flat, villa, or commercial space in minutes and showcase it to verified buyers across top Indian cities.</p>
+                </div>
+                <div class="col-lg-4 text-center text-lg-end">
+                    <a href="{% url 'sell' %}" class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark shadow">
+                        <i class="bi bi-cloud-upload me-1"></i> List Your Property Free
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Footer -->
+{% endblock %}

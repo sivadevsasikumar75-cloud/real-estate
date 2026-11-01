@@ -1,0 +1,40 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block page_title %}404 - Page Not Found | HILLTOP Real Estate{% endblock %}
+{% block page_description %}The page you are looking for does not exist on HILLTOP Real Estate. Explore our verified Indian property listings instead.{% endblock %}
+
+{% block content %}
+<!-- Header -->
+    
+
+    <!-- Error Content -->
+    <main class="my-auto py-5">
+        <div class="container-xl text-center">
+            <div class="max-w-700 mx-auto p-4 p-md-5 bg-white rounded-4 shadow-sm border">
+                <div class="display-1 fw-extrabold text-navy mb-2">404</div>
+                <div class="badge bg-danger-subtle text-danger px-3 py-1 rounded-pill fw-bold text-uppercase mb-3">
+                    Property Not Found
+                </div>
+                <h3 class="fw-bold text-dark mb-2">Oops! The Page or Property Has Moved</h3>
+                <p class="text-muted small mb-4">
+                    The link you followed may have expired, or the property has been successfully sold or rented out. Discover our active verified listings below.
+                </p>
+
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{% url 'index' %}" class="btn btn-navy rounded-pill px-4 fw-semibold">
+                        <i class="bi bi-house-door me-1"></i> Return to Homepage
+                    </a>
+                    <a href="{% url 'buy' %}" class="btn btn-outline-primary rounded-pill px-4 fw-semibold">
+                        <i class="bi bi-bag-check me-1"></i> Properties for Sale
+                    </a>
+                    <a href="{% url 'rent' %}" class="btn btn-outline-secondary rounded-pill px-4 fw-semibold">
+                        <i class="bi bi-key me-1"></i> Rental Properties
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+{% endblock %}

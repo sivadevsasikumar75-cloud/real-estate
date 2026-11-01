@@ -1,0 +1,133 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block page_title %}Rental Properties in India | HILLTOP Real Estate{% endblock %}
+{% block page_description %}Discover verified residential rental apartments, furnished flats, and independent houses across Bengaluru, Kochi, Mumbai, Hyderabad, and Chennai on HILLTOP.{% endblock %}
+
+{% block content %}
+<!-- Page Header Banner -->
+    <header class="py-5 bg-navy text-white text-center position-relative overflow-hidden" style="background: linear-gradient(135deg, #061e38 0%, #15437d 100%);">
+        <div class="container-xl position-relative z-1">
+            <span class="badge bg-info text-dark px-3 py-1 rounded-pill fw-bold text-uppercase mb-2">
+                <i class="bi bi-key-fill me-1"></i> Residential Rentals
+            </span>
+            <h1 class="fw-extrabold text-white mb-2">Rental Properties in India</h1>
+            <p class="text-white-50 lead fs-6 max-w-700 mx-auto mb-0">
+                Explore fully furnished and semi-furnished apartments, villas, and bachelor flats with transparent security deposit terms.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content & Filters -->
+    <main class="py-5 bg-light-subtle-custom">
+        <div class="container-xl">
+            <!-- Filter Bar Box -->
+            <div class="filter-card mb-4">
+                <div class="row g-3 align-items-end">
+                    <div class="col-lg-3 col-md-6">
+                        <label class="form-label text-muted small fw-bold mb-1">
+                            <i class="bi bi-search text-primary"></i> Keyword / Locality
+                        </label>
+                        <input type="text" class="form-control" id="rentKeyword" placeholder="e.g. Infopark, Powai, Malleshwaram...">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-sm-6">
+                        <label class="form-label text-muted small fw-bold mb-1">
+                            <i class="bi bi-geo-alt text-danger"></i> City
+                        </label>
+                        <select class="form-select" id="rentCity">
+                            <option value="all">All Cities</option>
+                            <option value="Bengaluru">Bengaluru</option>
+                            <option value="Kochi">Kochi</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Pune">Pune</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Delhi NCR">Delhi NCR</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-sm-6">
+                        <label class="form-label text-muted small fw-bold mb-1">
+                            <i class="bi bi-houses text-primary"></i> Type
+                        </label>
+                        <select class="form-select" id="rentType">
+                            <option value="all">All Types</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Independent Villa">Independent Villa</option>
+                            <option value="Studio">Studio Flat</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-1 col-md-3 col-sm-6">
+                        <label class="form-label text-muted small fw-bold mb-1">
+                            <i class="bi bi-door-open text-primary"></i> BHK
+                        </label>
+                        <select class="form-select" id="rentBhk">
+                            <option value="all">All</option>
+                            <option value="1">1 BHK</option>
+                            <option value="2">2 BHK</option>
+                            <option value="3">3 BHK</option>
+                            <option value="4">4+ BHK</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-sm-6">
+                        <label class="form-label text-muted small fw-bold mb-1">
+                            <i class="bi bi-couch text-primary"></i> Furnishing
+                        </label>
+                        <select class="form-select" id="rentFurnishing">
+                            <option value="all">Any Furnishing</option>
+                            <option value="Fully Furnished">Fully Furnished</option>
+                            <option value="Semi-Furnished">Semi-Furnished</option>
+                            <option value="Unfurnished">Unfurnished</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <label class="form-label text-muted small fw-bold mb-1">
+                            <i class="bi bi-cash text-success"></i> Monthly Rent
+                        </label>
+                        <select class="form-select" id="rentBudget">
+                            <option value="all">Any Monthly Rent</option>
+                            <option value="under-25k">Under ₹25,000/mo</option>
+                            <option value="25k-50k">₹25,000 - ₹50,000</option>
+                            <option value="50k-1l">₹50,000 - ₹1 Lakh</option>
+                            <option value="above-1l">Above ₹1 Lakh/mo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-3 pt-2 border-top">
+                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3" id="rentResetBtn">
+                        <i class="bi bi-arrow-counterclockwise me-1"></i> Reset Rental Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sorting & Results Summary Bar -->
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 pb-2 border-bottom">
+                <div>
+                    <h5 class="fw-bold mb-0 text-dark" id="rentResultsCount">Loading rentals...</h5>
+                </div>
+                <div class="d-flex align-items-center gap-2 mt-2 mt-sm-0">
+                    <label for="rentSort" class="text-muted small fw-semibold text-nowrap">Sort By:</label>
+                    <select class="form-select form-select-sm" id="rentSort" style="width: 190px;">
+                        <option value="featured">Featured Rentals</option>
+                        <option value="price-asc">Rent: Low to High</option>
+                        <option value="price-desc">Rent: High to Low</option>
+                        <option value="newest">Recently Listed</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Rental Property Grid -->
+            <div class="row" id="rentPropertiesContainer">
+                <!-- Dynamically populated by main.js from PropertyStore -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+{% endblock %}

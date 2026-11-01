@@ -1,0 +1,103 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block page_title %}Login | HILLTOP Real Estate India{% endblock %}
+{% block page_description %}Sign in to your HILLTOP Real Estate account to manage saved favourite properties and demo listings.{% endblock %}
+
+{% block content %}
+<!-- Minimal Header -->
+    
+
+    <!-- Main Login Section -->
+    <main class="py-5">
+        <div class="container-xl">
+            <div class="row justify-content-center">
+                <div class="col-md-7 col-lg-5">
+                    <!-- Demo Notice Banner -->
+                    <div class="alert alert-info border-0 shadow-sm rounded-4 p-3 mb-3">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <i class="bi bi-info-circle-fill text-info fs-5"></i>
+                            <strong class="small text-dark">Frontend Demo Authentication:</strong>
+                        </div>
+                        <p class="small text-muted mb-2">
+                            Authentication is simulated using local browser state. Use any quick-fill demo button below:
+                        </p>
+                        <div class="d-flex flex-wrap gap-1">
+                            <button type="button" class="btn btn-sm btn-outline-primary py-0 px-2 rounded-pill fs-xs" onclick="AuthStore.prefillDemo('Buyer')">
+                                <i class="bi bi-person me-1"></i> Buyer (Arun)
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-success py-0 px-2 rounded-pill fs-xs" onclick="AuthStore.prefillDemo('Seller')">
+                                <i class="bi bi-house-door me-1"></i> Seller (Priya)
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2 rounded-pill fs-xs" onclick="AuthStore.prefillDemo('Tenant')">
+                                <i class="bi bi-key me-1"></i> Tenant (Rahul)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Login Card -->
+                    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white">
+                        <div class="text-center mb-4">
+                            <h3 class="fw-bold text-dark mb-1">Welcome Back</h3>
+                            <p class="text-muted small">Access your HILLTOP account and saved Indian property portfolio.</p>
+                        </div>
+
+                        <!-- Login Form -->
+                        <form id="loginForm" novalidate>
+                            <div class="mb-3">
+                                <label class="form-label text-muted small fw-bold mb-1">Email or Mobile Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted"><i class="bi bi-person"></i></span>
+                                    <input type="text" class="form-control" id="loginIdentifier" placeholder="e.g. arun@hilltop.in or 9847012345" required>
+                                </div>
+                                <div class="invalid-feedback">Enter registered email or mobile number.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <label class="form-label text-muted small fw-bold mb-0">Password</label>
+                                    <a href="javascript:void(0)" class="small text-primary text-decoration-none" onclick="alert('Demo notice: For demo login, click the quick-fill buttons above or use buyer123 / seller123.')">
+                                        Forgot Password?
+                                    </a>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted"><i class="bi bi-lock"></i></span>
+                                    <input type="password" class="form-control" id="loginPassword" placeholder="Enter password" required>
+                                    <button class="btn btn-outline-secondary btn-toggle-password" type="button" data-target="loginPassword">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="invalid-feedback">Please enter your password.</div>
+                            </div>
+
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="rememberMe" checked>
+                                <label class="form-check-label small text-muted" for="rememberMe">
+                                    Remember me on this browser
+                                </label>
+                            </div>
+
+                            <!-- Error Alert Box -->
+                            <div id="loginErrorAlert" class="alert alert-danger small py-2 d-none mb-3"></div>
+
+                            <button type="submit" class="btn btn-navy w-100 py-2 rounded-pill fw-bold shadow-sm mb-3">
+                                Sign In
+                            </button>
+
+                            <div class="text-center">
+                                <span class="text-muted small">Don't have an account yet? </span>
+                                <a href="{% url 'register' %}" class="small fw-semibold text-primary">Register Free</a>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <small class="text-muted">
+                            &copy; 2026 HILLTOP Real Estate. Demo Indian Property Marketplace.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

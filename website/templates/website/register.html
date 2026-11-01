@@ -1,0 +1,125 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block page_title %}Register | HILLTOP Real Estate India{% endblock %}
+{% block page_description %}Create a free HILLTOP account as a Property Buyer, Seller, or Tenant to explore verified Indian real estate.{% endblock %}
+
+{% block content %}
+<!-- Minimal Header -->
+    
+
+    <!-- Main Registration Section -->
+    <main class="py-5">
+        <div class="container-xl">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white">
+                        <div class="text-center mb-4">
+                            <span class="badge bg-primary-subtle text-primary fw-bold text-uppercase px-3 py-1 rounded-pill mb-2">Join HILLTOP</span>
+                            <h3 class="fw-bold text-dark mb-1">Create Your Account</h3>
+                            <p class="text-muted small">Connect with verified property owners and certified real estate developers across India.</p>
+                        </div>
+
+                        <!-- Registration Form -->
+                        <form id="registerForm" novalidate>
+                            <div class="row g-3">
+                                <!-- User Type Selector -->
+                                <div class="col-12">
+                                    <label class="form-label text-muted small fw-bold mb-1">I am registering as *</label>
+                                    <select class="form-select" id="regRole" required>
+                                        <option value="Buyer" selected>Property Buyer (Looking to Buy Homes / Plots)</option>
+                                        <option value="Seller">Property Seller (Individual Owner / Landlord)</option>
+                                        <option value="Tenant">Tenant (Looking for Rentals)</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label text-muted small fw-bold mb-1">Full Legal Name *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted"><i class="bi bi-person"></i></span>
+                                        <input type="text" class="form-control" id="regFullName" placeholder="e.g. Arun Menon" required>
+                                    </div>
+                                    <div class="invalid-feedback">Enter your legal name (minimum 3 characters).</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label text-muted small fw-bold mb-1">Email Address *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted"><i class="bi bi-envelope"></i></span>
+                                        <input type="email" class="form-control" id="regEmail" placeholder="name@example.com" required>
+                                    </div>
+                                    <div class="invalid-feedback">Enter a valid email address.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label text-muted small fw-bold mb-1">Indian Mobile (+91) *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted"><i class="bi bi-phone"></i></span>
+                                        <input type="tel" class="form-control" id="regPhone" placeholder="10-digit Mobile" required>
+                                    </div>
+                                    <div class="invalid-feedback">Enter a valid 10-digit Indian phone number.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label text-muted small fw-bold mb-1">Create Password *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted"><i class="bi bi-lock"></i></span>
+                                        <input type="password" class="form-control" id="regPassword" placeholder="Min 6 characters" required>
+                                        <button class="btn btn-outline-secondary btn-toggle-password" type="button" data-target="regPassword">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="invalid-feedback">Password must be at least 6 characters.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label text-muted small fw-bold mb-1">Confirm Password *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted"><i class="bi bi-lock-fill"></i></span>
+                                        <input type="password" class="form-control" id="regConfirmPassword" placeholder="Re-type password" required>
+                                        <button class="btn btn-outline-secondary btn-toggle-password" type="button" data-target="regConfirmPassword">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="invalid-feedback">Passwords do not match.</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="regTerms" required checked>
+                                        <label class="form-check-label small text-muted" for="regTerms">
+                                            I agree to the <a href="javascript:void(0)" class="text-primary text-decoration-none">Terms of Service</a> and understand this registration stores demo data in browser storage.
+                                        </label>
+                                        <div class="invalid-feedback">You must accept the terms.</div>
+                                    </div>
+                                </div>
+
+                                <!-- Error Alert Box -->
+                                <div class="col-12">
+                                    <div id="registerErrorAlert" class="alert alert-danger small py-2 d-none mb-0"></div>
+                                </div>
+
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-navy w-100 py-3 rounded-pill fw-bold shadow-sm">
+                                        Create Free Account
+                                    </button>
+                                </div>
+
+                                <div class="col-12 text-center mt-3">
+                                    <span class="text-muted small">Already have an account? </span>
+                                    <a href="{% url 'login' %}" class="small fw-semibold text-primary">Sign In</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <small class="text-muted">
+                            &copy; 2026 HILLTOP Real Estate. Demo Indian Property Marketplace.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

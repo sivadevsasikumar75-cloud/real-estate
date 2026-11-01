@@ -1,0 +1,136 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block page_title %}Buy Properties in India | HILLTOP Real Estate{% endblock %}
+{% block page_description %}Explore verified residential apartments, independent villas, and penthouses for sale across India with transparent INR pricing on HILLTOP.{% endblock %}
+{% block utility_primary %}
+    <span><i class="bi bi-telephone-fill text-warning me-1"></i> Toll Free: <strong>1800-425-8900</strong></span>
+    <span><i class="bi bi-envelope-fill text-info me-1"></i> support@hilltoprealestate.in</span>
+    <span><i class="bi bi-geo-alt-fill text-danger me-1"></i> India Property Marketplace</span>
+{% endblock %}
+{% block utility_secondary %}
+    <span class="badge bg-primary bg-opacity-75">INR (₹)</span>
+    <a href="{% url 'favourites' %}" class="position-relative text-white text-decoration-none">
+        <i class="bi bi-heart me-1"></i> Saved Properties
+        <span class="badge bg-danger fav-count-badge">0</span>
+    </a>
+{% endblock %}
+
+{% block content %}
+<!-- Page Header Banner -->
+    <header class="py-5 bg-navy text-white text-center position-relative overflow-hidden" style="background: linear-gradient(135deg, #0B2545 0%, #173f75 100%);">
+        <div class="container-xl position-relative z-1">
+            <span class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold text-uppercase mb-2">
+                <i class="bi bi-bag-check-fill me-1"></i> Residential & Commercial
+            </span>
+            <h1 class="fw-extrabold text-white mb-2">Buy Properties in India</h1>
+            <p class="text-white-50 lead fs-6 max-w-700 mx-auto mb-0">
+                Browse verified flats, luxury villas, and penthouses with transparent INR valuations and RERA compliance.
+            </p>
+        </div>
+    </header>
+
+    <!-- Filter & Results Area -->
+    <main class="py-5 bg-light-subtle-custom">
+        <div class="container-xl">
+            <!-- Filter Bar Box -->
+            <div class="filter-card mb-4">
+                <div class="row g-3 align-items-end">
+                    <div class="col-lg-3 col-md-6">
+                        <label class="form-label text-muted small fw-bold mb-1">
+                            <i class="bi bi-search text-primary"></i> Keyword / Locality
+                        </label>
+                        <input type="text" class="form-control" id="filterKeyword" placeholder="e.g. Marine Drive, Whitefield, 3 BHK...">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-sm-6">
+                        <label class="form-label text-muted small fw-bold mb-1">
+                            <i class="bi bi-geo-alt text-danger"></i> City
+                        </label>
+                        <select class="form-select" id="filterCity">
+                            <option value="all">All Cities</option>
+                            <option value="Kochi">Kochi</option>
+                            <option value="Bengaluru">Bengaluru</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                            <option value="Kozhikode">Kozhikode</option>
+                            <option value="Kottayam">Kottayam</option>
+                            <option value="Delhi NCR">Delhi NCR</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Pune">Pune</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-sm-6">
+                        <label class="form-label text-muted small fw-bold mb-1">
+                            <i class="bi bi-houses text-primary"></i> Property Type
+                        </label>
+                        <select class="form-select" id="filterType">
+                            <option value="all">All Types</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Independent Villa">Independent Villa</option>
+                            <option value="Penthouse">Penthouse</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <label class="form-label text-muted small fw-bold mb-1">
+                            <i class="bi bi-door-open text-primary"></i> Bedrooms (BHK)
+                        </label>
+                        <select class="form-select" id="filterBhk">
+                            <option value="all">Any BHK</option>
+                            <option value="1">1 BHK</option>
+                            <option value="2">2 BHK</option>
+                            <option value="3">3 BHK</option>
+                            <option value="4">4+ BHK</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <label class="form-label text-muted small fw-bold mb-1">
+                            <i class="bi bi-cash-stack text-success"></i> Budget (INR)
+                        </label>
+                        <select class="form-select" id="filterBudget">
+                            <option value="all">Any Budget</option>
+                            <option value="under-50l">Under ₹50 Lakhs</option>
+                            <option value="50l-1cr">₹50L - ₹1 Crore</option>
+                            <option value="1cr-2cr">₹1Cr - ₹2 Crore</option>
+                            <option value="above-2cr">Above ₹2 Crore</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-1 col-md-4 col-sm-12">
+                        <button type="button" class="btn btn-outline-secondary w-100 py-2" id="resetFiltersBtn" title="Reset Filters">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sorting & Results Summary Bar -->
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 pb-2 border-bottom">
+                <div>
+                    <h5 class="fw-bold mb-0 text-dark" id="buyResultsCount">Loading properties...</h5>
+                </div>
+                <div class="d-flex align-items-center gap-2 mt-2 mt-sm-0">
+                    <label for="filterSort" class="text-muted small fw-semibold text-nowrap">Sort By:</label>
+                    <select class="form-select form-select-sm" id="filterSort" style="width: 190px;">
+                        <option value="featured">Featured First</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="area-desc">Area: Largest First</option>
+                        <option value="newest">Recently Listed</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Property Listings Grid -->
+            <div class="row" id="buyPropertiesContainer">
+                <!-- Dynamically populated by main.js from PropertyStore -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+{% endblock %}
