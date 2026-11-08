@@ -127,23 +127,24 @@ If using VS Code:
 The original Django project files (`manage.py`, `myapp/`, `realestate/`, `db.sqlite3`, `media/`) have been kept completely intact and untouched in `c:\realestate\`.
 The new static Indian real estate website resides entirely within the independent `realestate-static` folder.
 
-## 7. Run with Django in this project
+## 7. Build and preview the static website
 
-This workspace is now configured as a minimal Django project that serves the existing static website files.
+The website is static: browser-side JavaScript provides the demo property search, favourites, forms, and localStorage-based demo accounts. There is no deployed Django server, PostgreSQL database, or runtime backend. Django is used only during the build to render the existing templates into HTML pages.
 
-1. Open PowerShell in the project root.
-2. Activate the virtual environment:
-   `./.venv/Scripts/Activate.ps1`
-3. Install dependencies if needed:
-   `python -m pip install -r requirements.txt`
-4. Generate a Django secret key:
-   `python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"`
-5. Set the generated value in the current PowerShell session:
-   `$env:DJANGO_SECRET_KEY = "<generated value>"`
-6. Start the local server:
-   `python manage.py runserver`
-7. Open `http://127.0.0.1:8000/index.html`
+1. Install the build dependency: `python -m pip install -r requirements.txt`
+2. Export the pages and assets: `python build_static.py`
+3. Preview the exported site: `python -m http.server 8000 --directory dist`
+4. Open `http://127.0.0.1:8000/` (or a page such as `/buy.html`).
 
-The secret key is read from the `DJANGO_SECRET_KEY` environment variable and should not be committed to the repository.
+The exporter writes the rendered pages and the existing `assets/` tree into `dist/`; it checks local HTML, CSS, JavaScript, and asset references. Django is configured with its dummy database backend because none of the rendered views use database queries. It does not read or modify `db.sqlite3`, and migrations are not needed to export the pages.
 
-The project keeps the original static design and serves the existing `assets/` folder for CSS, JavaScript, and image files while routing the pages through Django.
+## 8. Deploy the static website to Vercel
+
+The repository's `vercel.json` selects Vercel's **Other** (static) framework, runs `python build_static.py`, and publishes `dist/`. The root URL is served from `index.html`; existing `.html` page links and `/assets/` references remain intact. Vercel does not run Django as a Function.
+
+1. Import this repository into Vercel, or deploy it with the Vercel CLI from the repository root.
+2. Leave the Framework Preset as **Other** (the checked-in config sets this explicitly).
+3. Use the checked-in install/build/output settings; do not configure a Django runtime or database.
+4. Deploy. No `DJANGO_SECRET_KEY`, `DATABASE_URL`, PostgreSQL provider, or Vercel environment variables are required.
+
+The templates continue to use Django's `{% static %}` tags, which are exported under `/assets/` alongside the existing JavaScript image paths. Google Fonts and the existing icon/Bootstrap CDN URLs remain external dependencies, as they do during local use.

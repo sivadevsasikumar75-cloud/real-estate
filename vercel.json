@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "python -m pip install -r requirements.txt",
+  "buildCommand": "python build_static.py",
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    }
+  ]
+}

@@ -1,19 +1,11 @@
 import os
 from pathlib import Path
 
-from django.core.exceptions import ImproperlyConfigured
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
-if not SECRET_KEY:
-    raise ImproperlyConfigured(
-        'Set the DJANGO_SECRET_KEY environment variable before starting Django.'
-    )
-
-DEBUG = True
-
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+DEBUG = os.environ.get('DJANGO_DEBUG', 'true').strip().lower() in {'true', '1'}
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'static-export-only-not-for-a-server')
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'testserver']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -56,12 +48,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 ASGI_APPLICATION = 'config.asgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = {'default': {'ENGINE': 'django.db.backends.dummy'}}
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -75,7 +62,7 @@ TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = '/assets/'
 STATICFILES_DIRS = [BASE_DIR / 'assets']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
