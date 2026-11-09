@@ -1,0 +1,504 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Your Property Free | HILLTOP Real Estate</title>
+    <meta name="description" content="List your residential apartment, villa, or commercial plot on HILLTOP. Reach genuine homebuyers and corporate tenants across India.">
+    <link rel="icon" type="image/png" href="/assets/images/icon-deal.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    
+</head>
+<body class="">
+    <div class="top-bar py-1 d-none d-md-block">
+        <div class="container-xl d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                
+    <span><i class="bi bi-telephone-fill text-warning me-1"></i> Seller Helpline: <strong>1800-425-8900</strong></span>
+    <span><i class="bi bi-tag-fill text-success me-1"></i> Zero Listing Fees for Owners</span>
+
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                
+    <span class="badge bg-warning text-dark">Demo Seller Submission Portal</span>
+
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark main-navbar sticky-top" id="mainNavbar">
+        <div class="container-xl">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/index.html">
+                <div class="brand-badge"><i class="bi bi-building"></i></div>
+                <div>
+                    <span class="brand-logo-text">HILLTOP</span>
+                    <small class="d-block text-white-50 text-uppercase">Real Estate India</small>
+                </div>
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#hilltopNavbar" aria-controls="hilltopNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="hilltopNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/buy.html">Buy Property</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/rent.html">Rent Property</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/sell.html">Sell Property</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact.html">Contact Us</a></li>
+                </ul>
+
+                <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+                    <button id="themeToggle" class="btn btn-outline-light btn-sm rounded-pill px-3" type="button">
+                        <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+                        <span id="themeText">Dark</span>
+                    </button>
+                    <div id="navAuthContainer">
+                        <div class="d-flex align-items-center gap-2">
+                            <a href="/login.html" class="btn btn-outline-light rounded-pill px-3">Login</a>
+                            <a href="/register.html" class="btn btn-primary rounded-pill px-3">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+<!-- Header Banner -->
+    <header class="py-5 bg-navy text-white text-center position-relative overflow-hidden" style="background: linear-gradient(135deg, #091b30 0%, #173d6b 100%);">
+        <div class="container-xl position-relative z-1">
+            <span class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold text-uppercase mb-2">
+                <i class="bi bi-cloud-arrow-up-fill me-1"></i> Post Property Free
+            </span>
+            <h1 class="fw-extrabold text-white mb-2">Sell or Rent Your Property on HILLTOP</h1>
+            <p class="text-white-50 lead fs-6 max-w-700 mx-auto mb-0">
+                Connect directly with 50,000+ verified Indian buyers and tenants with zero brokerage and maximum exposure.
+            </p>
+        </div>
+    </header>
+
+    <!-- Sell Form Section -->
+    <main class="py-5 bg-light-subtle-custom">
+        <div class="container-xl">
+            <!-- Notice Banner -->
+            <div class="alert alert-info border-0 shadow-sm rounded-4 p-3 mb-4 d-flex align-items-center gap-3">
+                <i class="bi bi-info-circle-fill text-info fs-3"></i>
+                <div class="small">
+                    <strong>Demo Simulation Notice:</strong> This submission form operates completely on the frontend. Submitting this form will store your demo listing locally in your browser's <code class="bg-white px-2 py-1 rounded text-dark">localStorage</code>. It will instantly appear on the Buy/Rent listings and in your personal Dashboard without requiring any backend server.
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white">
+                        <form id="sellPropertyForm" novalidate>
+                            <!-- Step 1: Basic Information -->
+                            <div class="border-bottom pb-4 mb-4">
+                                <h5 class="fw-bold text-dark mb-1">
+                                    <span class="badge bg-primary rounded-circle me-2">1</span> Property Purpose & Basic Details
+                                </h5>
+                                <p class="text-muted small mb-4">Specify whether you are looking to sell or rent out the property.</p>
+
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold small text-muted">Listing Purpose *</label>
+                                        <div class="d-flex gap-3">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="propPurpose" id="purposeSellRadio" value="buy" checked>
+                                                <label class="form-check-label fw-semibold" for="purposeSellRadio">I want to Sell (For Sale)</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="propPurpose" id="purposeRentRadio" value="rent">
+                                                <label class="form-check-label fw-semibold" for="purposeRentRadio">I want to Rent Out (Rental)</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold small text-muted">Property Type *</label>
+                                        <select class="form-select" id="propType" required>
+                                            <option value="">Select Property Type</option>
+                                            <option value="Apartment">Apartment / High-Rise Flat</option>
+                                            <option value="Independent Villa">Independent Villa / House</option>
+                                            <option value="Penthouse">Luxury Penthouse</option>
+                                            <option value="Studio">Studio Apartment</option>
+                                            <option value="Commercial">Commercial Office / Space</option>
+                                        </select>
+                                        <div class="invalid-feedback">Please select a property type.</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label fw-bold small text-muted">Property Listing Title *</label>
+                                        <input type="text" class="form-control" id="propTitle" placeholder="e.g. Skyline Haven 3 BHK Luxury Apartment in Marine Drive" required>
+                                        <div class="invalid-feedback">Enter an attractive title (at least 8 characters).</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Location Information -->
+                            <div class="border-bottom pb-4 mb-4">
+                                <h5 class="fw-bold text-dark mb-1">
+                                    <span class="badge bg-primary rounded-circle me-2">2</span> Location & Address Details
+                                </h5>
+                                <p class="text-muted small mb-4">Provide accurate location details so Indian buyers can calculate transit distances.</p>
+
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-bold small text-muted">City *</label>
+                                        <input type="text" class="form-control" id="propCity" placeholder="e.g. Kochi, Bengaluru, Mumbai" required>
+                                        <div class="invalid-feedback">City is required.</div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-bold small text-muted">Locality / Neighborhood *</label>
+                                        <input type="text" class="form-control" id="propLocality" placeholder="e.g. Marine Drive, Indiranagar, Bandra" required>
+                                        <div class="invalid-feedback">Locality is required.</div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-bold small text-muted">State *</label>
+                                        <select class="form-select" id="propState">
+                                            <option value="Kerala">Kerala</option>
+                                            <option value="Karnataka">Karnataka</option>
+                                            <option value="Maharashtra">Maharashtra</option>
+                                            <option value="Telangana">Telangana</option>
+                                            <option value="Tamil Nadu">Tamil Nadu</option>
+                                            <option value="Delhi NCR">Delhi NCR</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label fw-bold small text-muted">Full Street Address *</label>
+                                        <textarea class="form-control" id="propAddress" rows="2" placeholder="e.g. Flat 1204, Tower B, Prestige Ocean Heights, Shanmugham Road, Kochi 682031" required></textarea>
+                                        <div class="invalid-feedback">Enter the full street address.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Dimensions & Pricing -->
+                            <div class="border-bottom pb-4 mb-4">
+                                <h5 class="fw-bold text-dark mb-1">
+                                    <span class="badge bg-primary rounded-circle me-2">3</span> Specifications, Dimensions & Price
+                                </h5>
+                                <p class="text-muted small mb-4">Provide built-up specifications in square feet and price in Indian Rupees (₹).</p>
+
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-bold small text-muted">Bedrooms (BHK) *</label>
+                                        <select class="form-select" id="propBhk">
+                                            <option value="1">1 BHK</option>
+                                            <option value="2" selected>2 BHK</option>
+                                            <option value="3">3 BHK</option>
+                                            <option value="4">4 BHK</option>
+                                            <option value="5">5+ BHK</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-bold small text-muted">Bathrooms *</label>
+                                        <select class="form-select" id="propBathrooms">
+                                            <option value="1">1 Bathroom</option>
+                                            <option value="2" selected>2 Bathrooms</option>
+                                            <option value="3">3 Bathrooms</option>
+                                            <option value="4">4+ Bathrooms</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-bold small text-muted">Furnishing Status *</label>
+                                        <select class="form-select" id="propFurnishing">
+                                            <option value="Fully Furnished">Fully Furnished</option>
+                                            <option value="Semi-Furnished" selected>Semi-Furnished</option>
+                                            <option value="Unfurnished">Unfurnished</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold small text-muted">Carpet Area (in sq.ft) *</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="propCarpetArea" placeholder="e.g. 1350" required>
+                                            <span class="input-group-text bg-light text-muted">sq.ft</span>
+                                        </div>
+                                        <div class="invalid-feedback">Enter carpet area in sq.ft.</div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold small text-muted">Expected Price (INR ₹) *</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light fw-bold">₹</span>
+                                            <input type="number" class="form-control" id="propPrice" placeholder="e.g. 8500000 for sale or 35000 for rent" required>
+                                        </div>
+                                        <div class="invalid-feedback">Enter realistic expected amount in Rupees.</div>
+                                        <small class="text-muted">For Rent: enter monthly rent; For Sale: enter total price.</small>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label fw-bold small text-muted">Property Highlights & Description *</label>
+                                        <textarea class="form-control" id="propDescription" rows="4" placeholder="Highlight view, ventilation, Vastu compliance, balcony features, nearby metro, schools, etc." required></textarea>
+                                        <div class="invalid-feedback">Provide a short description (minimum 20 characters).</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Amenities Selection -->
+                            <div class="border-bottom pb-4 mb-4">
+                                <h5 class="fw-bold text-dark mb-1">
+                                    <span class="badge bg-primary rounded-circle me-2">4</span> Society & Unit Amenities
+                                </h5>
+                                <p class="text-muted small mb-3">Select the amenities available in this property.</p>
+
+                                <div class="row g-2">
+                                    <div class="col-6 col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="amenities" value="24/7 Power Backup (100%)" id="amen1" checked>
+                                            <label class="form-check-label small" for="amen1">24/7 Power Backup</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="amenities" value="Swimming Pool" id="amen2" checked>
+                                            <label class="form-check-label small" for="amen2">Swimming Pool</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="amenities" value="Gymnasium & Fitness Studio" id="amen3" checked>
+                                            <label class="form-check-label small" for="amen3">Gym & Fitness</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="amenities" value="24/7 Gated Security & CCTV" id="amen4" checked>
+                                            <label class="form-check-label small" for="amen4">Gated Security & CCTV</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="amenities" value="Covered Car Parking" id="amen5" checked>
+                                            <label class="form-check-label small" for="amen5">Reserved Car Parking</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="amenities" value="Children's Play Area" id="amen6" checked>
+                                            <label class="form-check-label small" for="amen6">Kids Play Area</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="amenities" value="Clubhouse & Community Hall" id="amen7">
+                                            <label class="form-check-label small" for="amen7">Clubhouse</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="amenities" value="EV Vehicle Charging" id="amen8">
+                                            <label class="form-check-label small" for="amen8">EV Charging Station</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="amenities" value="Vastu Compliant Design" id="amen9" checked>
+                                            <label class="form-check-label small" for="amen9">Vastu Compliant</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Photos & Live Preview -->
+                            <div class="border-bottom pb-4 mb-4">
+                                <h5 class="fw-bold text-dark mb-1">
+                                    <span class="badge bg-primary rounded-circle me-2">5</span> Property Photos & Image Preview
+                                </h5>
+                                <p class="text-muted small mb-3">Upload clear photos of the hall, bedrooms, kitchen and building facade.</p>
+
+                                <div class="mb-3">
+                                    <input class="form-control" type="file" id="propertyImages" multiple accept="image/*">
+                                    <small class="text-muted">Select 1 or more photos from your device. Live previews will render below.</small>
+                                </div>
+
+                                <!-- Live Preview Container -->
+                                <div class="row g-2" id="imagePreviewContainer">
+                                    <!-- Rendered dynamically via FileReader in forms.js -->
+                                </div>
+                            </div>
+
+                            <!-- Step 6: Contact Information -->
+                            <div class="pb-3 mb-4">
+                                <h5 class="fw-bold text-dark mb-1">
+                                    <span class="badge bg-primary rounded-circle me-2">6</span> Seller / Landlord Contact Details
+                                </h5>
+                                <p class="text-muted small mb-3">Buyers will view these contact coordinates on your listing.</p>
+
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-bold small text-muted">Full Name *</label>
+                                        <input type="text" class="form-control" id="sellerName" placeholder="e.g. Rajesh Nair" required>
+                                        <div class="invalid-feedback">Enter your name.</div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-bold small text-muted">Indian Mobile Number (+91) *</label>
+                                        <input type="tel" class="form-control" id="sellerPhone" placeholder="10-digit Mobile (e.g. 9845012345)" required>
+                                        <div class="invalid-feedback">Enter a valid 10-digit Indian phone number.</div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-bold small text-muted">Email Address *</label>
+                                        <input type="email" class="form-control" id="sellerEmail" placeholder="rajesh@example.com" required>
+                                        <div class="invalid-feedback">Enter a valid email address.</div>
+                                    </div>
+
+                                    <div class="col-12 mt-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="sellerAgree" required checked>
+                                            <label class="form-check-label small text-muted" for="sellerAgree">
+                                                I confirm that this is a demo property submission for the HILLTOP showcase and understand listings are stored in local browser memory.
+                                            </label>
+                                            <div class="invalid-feedback">You must acknowledge the terms.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="text-center pt-2">
+                                <button type="submit" class="btn btn-warning btn-lg rounded-pill px-5 fw-bold text-dark shadow">
+                                    <i class="bi bi-cloud-arrow-up-fill me-1"></i> Publish Demo Property Listing
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="sellSuccessModal" tabindex="-1" aria-labelledby="sellSuccessModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 shadow">
+                <div class="modal-body p-4 text-center">
+                    <div class="rounded-circle bg-success-subtle text-success d-inline-flex p-3 mb-3">
+                        <i class="bi bi-check-circle-fill display-4"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-1">Demo Property Published!</h4>
+                    <p class="text-muted small mb-3">
+                        Your property listing has been saved to local browser storage with Demo Reference:
+                    </p>
+                    <div class="badge bg-light text-primary border fs-6 font-monospace px-3 py-2 mb-3" id="modalPropertyId">
+                        HT-DEMO-XXXX
+                    </div>
+                    <p class="text-secondary small mb-4">
+                        You can immediately browse it in the Buy/Rent catalogue, view its complete details page, or manage it in your User Dashboard.
+                    </p>
+                    <div class="d-flex justify-content-center gap-2">
+                        <a href="/dashboard.html" class="btn btn-primary rounded-pill px-4 fw-semibold">
+                            Go to Dashboard
+                        </a>
+                        <a href="/buy.html" class="btn btn-outline-secondary rounded-pill px-4 fw-semibold">
+                            Browse Listings
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+
+    <footer class="main-footer">
+        <div class="container-xl">
+            <div class="row g-4 pb-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <div class="brand-badge" style="width: 32px; height: 32px; font-size: 1rem;"><i class="bi bi-building"></i></div>
+                        <h4 class="brand-logo-text mb-0">HILLTOP</h4>
+                    </div>
+                    <p class="text-white-50 small mb-3">HILLTOP Real Estate is India's modern digital real estate portal. Dedicated to providing transparent, verified property listings across Kerala, Karnataka, Maharashtra, Telangana, and Delhi NCR.</p>
+                    <div class="d-flex">
+                        <a href="javascript:void(0)" class="footer-social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="javascript:void(0)" class="footer-social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="javascript:void(0)" class="footer-social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="javascript:void(0)" class="footer-social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 col-6">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/buy.html">Buy Properties</a></li>
+                        <li><a href="/rent.html">Rental Properties</a></li>
+                        <li><a href="/sell.html">Sell Property</a></li>
+                        <li><a href="/favourites.html">Saved Favourites</a></li>
+                        <li><a href="/dashboard.html">User Dashboard</a></li>
+                        <li><a href="/contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-6">
+                    <h5>Top Indian Hubs</h5>
+                    <ul>
+                        <li><a href="/buy.html?city=Kochi">Kochi Marine Drive</a></li>
+                        <li><a href="/buy.html?city=Bengaluru">Bengaluru Tech Corridor</a></li>
+                        <li><a href="/buy.html?city=Mumbai">Mumbai Luxury Flats</a></li>
+                        <li><a href="/buy.html?city=Hyderabad">Hyderabad Financial District</a></li>
+                        <li><a href="/buy.html?city=Thiruvananthapuram">Trivandrum Kowdiar</a></li>
+                        <li><a href="/buy.html?city=Delhi NCR">Gurugram Golf Course Rd</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5>Stay Updated</h5>
+                    <p class="text-white-50 small mb-3">Subscribe to our weekly Indian real estate digest with latest market valuations and RERA news.</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control form-control-sm" placeholder="Enter your email" required>
+                            <button class="btn btn-primary btn-sm" type="submit">Join</button>
+                        </div>
+                    </form>
+                    <div class="mt-3"><small class="text-white-50 d-block"><i class="bi bi-shield-lock me-1"></i> 100% Privacy. No spam ever.</small></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container-xl">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                        <p class="mb-0 text-white-50">&copy; 2026 <strong>HILLTOP Real Estate</strong>. All rights reserved. Designed for Indian Real Estate Market.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <small class="text-white-50">Disclaimer: All property listings, RERA numbers, and specifications shown are for demo and showcase purposes.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTopBtn" class="d-none" type="button" title="Back to top" aria-label="Back to top">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/properties.js"></script>
+    <script src="/assets/js/auth.js"></script>
+    <script src="/assets/js/forms.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

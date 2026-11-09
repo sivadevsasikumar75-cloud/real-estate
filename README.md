@@ -46,20 +46,21 @@ Developed purely with **HTML5, CSS3, Vanilla JavaScript, and Bootstrap 5**, comp
 ## 3. Directory Structure
 
 ```text
-realestate-static/
+realestate/
 │
-├── index.html              # Homepage with hero search, categories, featured homes, testimonials
-├── buy.html                # Buy Properties with live search, filters, and price sorting
-├── rent.html               # Rental Properties with security deposit, furnishing, and monthly rent filters
-├── property-details.html   # Dynamic Property Details with image gallery, specs, amenities, and owner contact
-├── sell.html               # Sell / Rent submission form with live photo preview and localStorage saving
-├── about.html              # Company introduction, mission/vision, services, and leadership team
-├── contact.html            # Indian regional offices (Kochi, Bengaluru, Mumbai), inquiry form, and FAQs
-├── login.html              # Demo login with instant prefill credentials for Buyer, Seller, and Tenant
-├── register.html           # Registration form with Indian mobile number validation and role selection
-├── dashboard.html          # User Dashboard with saved favourites, recent views, and listed demo properties
-├── favourites.html         # Saved Favourites management with one-click bookmarking and removal
-├── 404.html                # Custom error page with working home and search navigation
+├── dist/                   # Deployable static site with all 12 HTML pages and its own assets/
+│   ├── index.html
+│   ├── about.html
+│   ├── buy.html
+│   ├── rent.html
+│   ├── sell.html
+│   ├── property-details.html
+│   ├── login.html
+│   ├── register.html
+│   ├── dashboard.html
+│   ├── favourites.html
+│   ├── contact.html
+│   └── 404.html
 │
 ├── assets/
 │   ├── css/
@@ -73,8 +74,11 @@ realestate-static/
 │   │   ├── forms.js        # Form validation, image preview, and inquiry handling
 │   │   └── main.js         # Core UI interactions, toast alerts, and page router
 │   │
-│   └── images/             # 50+ property photos, city views, team members, and icons
+│   ├── images/             # Property photos, city views, team members, and icons
+│   └── lib/                # Existing front-end libraries
 │
+├── website/                # Preserved original Django source; not served by Vercel
+├── vercel.json
 └── README.md               # Complete documentation
 ```
 
@@ -110,41 +114,21 @@ realestate-static/
 
 ## 5. How to Run the Website
 
-This website is **100% static** and does not require Python, Django, Node.js, or any database setup.
-
-### Option 1: Direct File Open
-Simply navigate to `c:\realestate\realestate-static\` and double-click `index.html` to open it in your preferred web browser (Google Chrome, Microsoft Edge, Mozilla Firefox, Safari).
-
-### Option 2: Local Web Server (Optional)
-If using VS Code:
-1. Open the `realestate-static` folder in VS Code.
-2. Right-click `index.html` and click **"Open with Live Server"**.
+The deployable site in `dist/` is static and needs no Python, Django, Node.js, or database setup.
+In VS Code, open the `dist/` folder, right-click `index.html`, and choose **Open with Live Server**. Serving `dist/` as the web root preserves the site's `/assets/` and page links.
 
 ---
 
-## 6. Original Django Project Preservation
+## 6. Original Django Source
 
-The original Django project files (`manage.py`, `myapp/`, `realestate/`, `db.sqlite3`, `media/`) have been kept completely intact and untouched in `c:\realestate\`.
-The new static Indian real estate website resides entirely within the independent `realestate-static` folder.
+The original Django templates and website source under `website/` are retained and are not part of the deployed output. Vercel serves only `dist/`; it does not install or run Django. The generated HTML pages in `dist/` contain no Django template tags.
 
-## 7. Build and preview the static website
+## 7. Static site behavior
 
-The website is static: browser-side JavaScript provides the demo property search, favourites, forms, and localStorage-based demo accounts. There is no deployed Django server, PostgreSQL database, or runtime backend. Django is used only during the build to render the existing templates into HTML pages.
-
-1. Install the build dependency: `python -m pip install -r requirements.txt`
-2. Export the pages and assets: `python build_static.py`
-3. Preview the exported site: `python -m http.server 8000 --directory dist`
-4. Open `http://127.0.0.1:8000/` (or a page such as `/buy.html`).
-
-The exporter writes the rendered pages and the existing `assets/` tree into `dist/`; it checks local HTML, CSS, JavaScript, and asset references. Django is configured with its dummy database backend because none of the rendered views use database queries. It does not read or modify `db.sqlite3`, and migrations are not needed to export the pages.
+Property search, favourites, forms, and demo accounts run in the browser. Login and registration data stored in `localStorage` are demonstration-only and are not secure authentication. No server-side form submission or account service is configured.
 
 ## 8. Deploy the static website to Vercel
 
-The repository's `vercel.json` selects Vercel's **Other** (static) framework, runs `python build_static.py`, and publishes `dist/`. The root URL is served from `index.html`; existing `.html` page links and `/assets/` references remain intact. Vercel does not run Django as a Function.
+The repository's `vercel.json` selects Vercel's **Other** (static) framework and publishes `dist/` without installing dependencies or running a build. `/` serves `index.html`; each `.html` page is directly accessible, and Vercel uses `404.html` for missing routes.
 
-1. Import this repository into Vercel, or deploy it with the Vercel CLI from the repository root.
-2. Leave the Framework Preset as **Other** (the checked-in config sets this explicitly).
-3. Use the checked-in install/build/output settings; do not configure a Django runtime or database.
-4. Deploy. No `DJANGO_SECRET_KEY`, `DATABASE_URL`, PostgreSQL provider, or Vercel environment variables are required.
-
-The templates continue to use Django's `{% static %}` tags, which are exported under `/assets/` alongside the existing JavaScript image paths. Google Fonts and the existing icon/Bootstrap CDN URLs remain external dependencies, as they do during local use.
+Import the repository into Vercel and deploy with the checked-in static configuration. Google Fonts, Bootstrap 5.3, Bootstrap Icons, and Font Awesome are loaded from external CDNs and require network access.

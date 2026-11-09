@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details | HILLTOP Real Estate</title>
+    <meta name="description" content="View comprehensive property specifications, floor plans, verified owner details, and nearby facilities on HILLTOP Real Estate.">
+    <link rel="icon" type="image/png" href="/assets/images/icon-deal.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    
+</head>
+<body class="">
+    <div class="top-bar py-1 d-none d-md-block">
+        <div class="container-xl d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                
+    <span><i class="bi bi-telephone-fill text-warning me-1"></i> Helpline: <strong>1800-425-8900</strong></span>
+    <span><i class="bi bi-shield-check text-success me-1"></i> Verified Property Dossier</span>
+
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                
+    <a href="/buy.html" class="text-white text-decoration-none"><i class="bi bi-arrow-left me-1"></i> Back to Listings</a>
+    <a href="/favourites.html" class="position-relative text-white text-decoration-none">
+        <i class="bi bi-heart me-1"></i> Saved
+        <span class="badge bg-danger fav-count-badge">0</span>
+    </a>
+
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark main-navbar sticky-top" id="mainNavbar">
+        <div class="container-xl">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/index.html">
+                <div class="brand-badge"><i class="bi bi-building"></i></div>
+                <div>
+                    <span class="brand-logo-text">HILLTOP</span>
+                    <small class="d-block text-white-50 text-uppercase">Real Estate India</small>
+                </div>
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#hilltopNavbar" aria-controls="hilltopNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="hilltopNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/buy.html">Buy Property</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/rent.html">Rent Property</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/sell.html">Sell Property</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact.html">Contact Us</a></li>
+                </ul>
+
+                <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+                    <button id="themeToggle" class="btn btn-outline-light btn-sm rounded-pill px-3" type="button">
+                        <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+                        <span id="themeText">Dark</span>
+                    </button>
+                    <div id="navAuthContainer">
+                        <div class="d-flex align-items-center gap-2">
+                            <a href="/login.html" class="btn btn-outline-light rounded-pill px-3">Login</a>
+                            <a href="/register.html" class="btn btn-primary rounded-pill px-3">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+<!-- Property Header Info Bar -->
+    <section class="bg-white border-bottom py-4">
+        <div class="container-xl">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                        <span id="propDetailPurposeBadge" class="badge bg-primary">FOR SALE</span>
+                        <span id="propDetailStatusBadge" class="badge bg-light text-secondary border font-monospace">Ready to Move</span>
+                        <span id="propDetailRera" class="badge bg-success-subtle text-success border border-success-subtle">
+                            <i class="bi bi-shield-check"></i> RERA Approved
+                        </span>
+                    </div>
+                    <h2 class="fw-extrabold text-dark mb-1" id="propDetailTitle">Loading Property Details...</h2>
+                    <p class="text-muted small mb-0" id="propDetailAddress">
+                        <i class="bi bi-geo-alt-fill text-danger me-1"></i> Location loading...
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                    <div class="d-inline-block text-lg-end">
+                        <h2 class="text-primary fw-extrabold mb-0" id="propDetailPrice">₹0</h2>
+                        <small class="text-muted d-block" id="propDetailPricePerSqft">Valuation estimate</small>
+                    </div>
+                    <div class="mt-2">
+                        <button class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-semibold" id="propDetailFavBtn">
+                            <i class="bi bi-heart me-1"></i> Save Property
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <main class="py-5 bg-light-subtle-custom">
+        <div class="container-xl">
+            <div class="row g-4">
+                <!-- Left Details Column -->
+                <div class="col-lg-8">
+                    <!-- Gallery Box -->
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4 p-3 bg-white">
+                        <div class="property-main-img-box mb-3">
+                            <img src="/assets/images/property-1.jpg" id="propDetailMainImage" alt="Property Main Image">
+                        </div>
+                        <div class="row g-2" id="propDetailThumbs">
+                            <!-- Thumbnails injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Quick Key Metrics Grid -->
+                    <div class="card border-0 shadow-sm rounded-4 p-4 mb-4 bg-white">
+                        <h5 class="fw-bold text-dark mb-3">Overview & Dimensions</h5>
+                        <div class="row g-3" id="propDetailSpecs">
+                            <!-- Specs injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="card border-0 shadow-sm rounded-4 p-4 mb-4 bg-white">
+                        <h5 class="fw-bold text-dark mb-3">Property Description</h5>
+                        <div id="propDetailDescription">
+                            <p class="text-secondary">Loading description...</p>
+                        </div>
+                    </div>
+
+                    <!-- Specifications Table -->
+                    <div class="card border-0 shadow-sm rounded-4 p-4 mb-4 bg-white">
+                        <h5 class="fw-bold text-dark mb-3">Key Property Features & Legal Status</h5>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped mb-0">
+                                <tbody id="propDetailTableBody">
+                                    <!-- Table rows injected via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="p-3 bg-light rounded-3 mt-3 border">
+                            <small class="text-muted d-block">
+                                <i class="bi bi-info-circle text-primary me-1"></i>
+                                <strong>RERA Transparency Note:</strong> Real Estate Regulatory Authority (RERA) registrations apply according to state real estate norms. The numbers shown in this demonstration platform are illustrative representations.
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Amenities -->
+                    <div class="card border-0 shadow-sm rounded-4 p-4 mb-4 bg-white">
+                        <h5 class="fw-bold text-dark mb-3">Project & Society Amenities</h5>
+                        <div class="row" id="propDetailAmenities">
+                            <!-- Amenities injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Nearby Facilities -->
+                    <div class="card border-0 shadow-sm rounded-4 p-4 mb-4 bg-white">
+                        <h5 class="fw-bold text-dark mb-3">Locality & Landmark Distances</h5>
+                        <ul class="list-group list-group-flush rounded-3 border" id="propDetailNearby">
+                            <!-- Nearby facilities injected via JS -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar (Owner/Agent + Inquiry Form) -->
+                <div class="col-lg-4">
+                    <div class="agent-contact-card">
+                        <!-- Owner Info -->
+                        <div class="d-flex align-items-center gap-3 pb-3 border-bottom mb-3">
+                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold fs-4" style="width: 54px; height: 54px;">
+                                <i class="bi bi-person-check-fill"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold text-dark mb-0" id="propOwnerName">Property Advisor</h6>
+                                <small class="text-muted d-block" id="propOwnerDesig">Certified HILLTOP Partner</small>
+                                <span class="badge bg-success-subtle text-success fs-xxs">
+                                    <i class="bi bi-patch-check-fill"></i> Verified Contact
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Direct Call / Email buttons -->
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <a href="tel:+919845012345" id="propOwnerPhone" class="btn btn-outline-primary btn-sm w-100 py-2 rounded-3 fw-semibold">
+                                    <i class="bi bi-telephone-fill me-1"></i> Call Now
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <a href="mailto:info@hilltop.in" id="propOwnerEmail" class="btn btn-outline-dark btn-sm w-100 py-2 rounded-3 fw-semibold">
+                                    <i class="bi bi-envelope-fill me-1"></i> Email
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Contact / Schedule Visit Form -->
+                        <h6 class="fw-bold text-dark mb-2">Request Site Visit / Callback</h6>
+                        <p class="text-muted small mb-3">Send your details directly to the verified listing owner or our relationship manager.</p>
+
+                        <form id="ownerInquiryForm">
+                            <div class="mb-2">
+                                <label class="form-label text-muted small fw-bold mb-1">Your Name</label>
+                                <input type="text" class="form-control form-control-sm" id="inqName" placeholder="Full Name" required>
+                                <div class="invalid-feedback">Enter your name.</div>
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label text-muted small fw-bold mb-1">Mobile Number (+91)</label>
+                                <input type="tel" class="form-control form-control-sm" id="inqPhone" placeholder="10-digit Indian Mobile" required>
+                                <div class="invalid-feedback">Enter a valid 10-digit mobile number.</div>
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label text-muted small fw-bold mb-1">Email Address</label>
+                                <input type="email" class="form-control form-control-sm" id="inqEmail" placeholder="name@example.com" required>
+                                <div class="invalid-feedback">Enter a valid email.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-muted small fw-bold mb-1">Message / Preferred Visit Date</label>
+                                <textarea class="form-control form-control-sm" id="inqMessage" rows="3" placeholder="I am interested in this property. Please share full brochure and confirm if home loan assistance is available."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 py-2 rounded-3 fw-bold">
+                                <i class="bi bi-send-fill me-1"></i> Send Inquiry to Owner
+                            </button>
+
+                            <div id="inquirySuccessAlert" class="d-none"></div>
+                        </form>
+
+                        <div class="mt-4 pt-3 border-top text-center">
+                            <small class="text-muted d-block">
+                                <i class="bi bi-shield-shaded text-success me-1"></i>
+                                HILLTOP Buyer Protection: Zero spam, direct owner coordination.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Similar Properties Section -->
+            <div class="mt-5 pt-4 border-top">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="fw-bold mb-0">Similar Properties You May Like</h3>
+                    <a href="/buy.html" class="btn btn-outline-primary btn-sm rounded-pill px-3">View All</a>
+                </div>
+                <div class="row" id="similarPropertiesContainer">
+                    <!-- Similar properties injected via JS -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+
+
+    <footer class="main-footer">
+        <div class="container-xl">
+            <div class="row g-4 pb-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <div class="brand-badge" style="width: 32px; height: 32px; font-size: 1rem;"><i class="bi bi-building"></i></div>
+                        <h4 class="brand-logo-text mb-0">HILLTOP</h4>
+                    </div>
+                    <p class="text-white-50 small mb-3">HILLTOP Real Estate is India's modern digital real estate portal. Dedicated to providing transparent, verified property listings across Kerala, Karnataka, Maharashtra, Telangana, and Delhi NCR.</p>
+                    <div class="d-flex">
+                        <a href="javascript:void(0)" class="footer-social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="javascript:void(0)" class="footer-social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="javascript:void(0)" class="footer-social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="javascript:void(0)" class="footer-social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 col-6">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/buy.html">Buy Properties</a></li>
+                        <li><a href="/rent.html">Rental Properties</a></li>
+                        <li><a href="/sell.html">Sell Property</a></li>
+                        <li><a href="/favourites.html">Saved Favourites</a></li>
+                        <li><a href="/dashboard.html">User Dashboard</a></li>
+                        <li><a href="/contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-6">
+                    <h5>Top Indian Hubs</h5>
+                    <ul>
+                        <li><a href="/buy.html?city=Kochi">Kochi Marine Drive</a></li>
+                        <li><a href="/buy.html?city=Bengaluru">Bengaluru Tech Corridor</a></li>
+                        <li><a href="/buy.html?city=Mumbai">Mumbai Luxury Flats</a></li>
+                        <li><a href="/buy.html?city=Hyderabad">Hyderabad Financial District</a></li>
+                        <li><a href="/buy.html?city=Thiruvananthapuram">Trivandrum Kowdiar</a></li>
+                        <li><a href="/buy.html?city=Delhi NCR">Gurugram Golf Course Rd</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5>Stay Updated</h5>
+                    <p class="text-white-50 small mb-3">Subscribe to our weekly Indian real estate digest with latest market valuations and RERA news.</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control form-control-sm" placeholder="Enter your email" required>
+                            <button class="btn btn-primary btn-sm" type="submit">Join</button>
+                        </div>
+                    </form>
+                    <div class="mt-3"><small class="text-white-50 d-block"><i class="bi bi-shield-lock me-1"></i> 100% Privacy. No spam ever.</small></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container-xl">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                        <p class="mb-0 text-white-50">&copy; 2026 <strong>HILLTOP Real Estate</strong>. All rights reserved. Designed for Indian Real Estate Market.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <small class="text-white-50">Disclaimer: All property listings, RERA numbers, and specifications shown are for demo and showcase purposes.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTopBtn" class="d-none" type="button" title="Back to top" aria-label="Back to top">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/properties.js"></script>
+    <script src="/assets/js/auth.js"></script>
+    <script src="/assets/js/forms.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

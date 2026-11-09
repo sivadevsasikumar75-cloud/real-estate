@@ -36,9 +36,9 @@ const HilltopUI = {
     // Highlight active link in navbar
     highlightActiveNav: function() {
         const currentPath = window.location.pathname.split("/").pop() || "index.html";
-        document.querySelectorAll(".nav-link").forEach(link => {
-            const href = link.getAttribute("href");
-            if (href === currentPath || (currentPath === "" && href === "index.html")) {
+        document.querySelectorAll(".main-navbar .nav-link").forEach(link => {
+            const linkPath = link.pathname.split("/").pop() || "index.html";
+            if (linkPath === currentPath) {
                 link.classList.add("active");
             } else {
                 link.classList.remove("active");
