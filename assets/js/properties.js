@@ -1140,7 +1140,7 @@ const PropertyStore = {
                         <span class="text-truncate">${prop.locality}, ${prop.city}</span>
                     </div>
                     <h6 class="card-title fw-bold mb-2">
-                        <a href="property-details.html?id=${prop.id}" class="text-dark text-decoration-none property-link-hover">
+                        <a href="/property-details.html?id=${prop.id}" class="text-dark text-decoration-none property-link-hover">
                             ${prop.title}
                         </a>
                     </h6>
@@ -1160,7 +1160,7 @@ const PropertyStore = {
                     </div>
                     <div class="d-flex justify-content-between align-items-center pt-3">
                         <span class="badge bg-light text-secondary border px-2 py-1 font-monospace fs-xs">${prop.possession || 'Ready to Move'}</span>
-                        <a href="property-details.html?id=${prop.id}" class="btn btn-outline-primary btn-sm px-3 rounded-pill fw-semibold">
+                        <a href="/property-details.html?id=${prop.id}" class="btn btn-outline-primary btn-sm px-3 rounded-pill fw-semibold">
                             View Details <i class="bi bi-arrow-right ms-1"></i>
                         </a>
                     </div>

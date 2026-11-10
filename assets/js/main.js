@@ -6,6 +6,7 @@
 const HilltopUI = {
     init: function() {
         this.initStickyNavbar();
+        this.initMobileNavigation();
         this.highlightActiveNav();
         this.initBackToTop();
         this.updateFavouritesCount();
@@ -33,11 +34,95 @@ const HilltopUI = {
         });
     },
 
+    initMobileNavigation: function() {
+        const toggle = document.querySelector(".navbar-toggler");
+        const panel = document.getElementById("hilltopNavbar");
+        const navbar = document.querySelector(".main-navbar");
+        if (!toggle || !panel || !navbar) return;
+
+        const mobileViewport = window.matchMedia("(max-width: 1199.98px)");
+        const backdrop = document.createElement("div");
+        backdrop.className = "mobile-nav-backdrop";
+        backdrop.hidden = true;
+        backdrop.setAttribute("aria-hidden", "true");
+        document.body.appendChild(backdrop);
+
+        const closeMenu = (restoreFocus = false) => {
+            panel.classList.remove("show");
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open navigation menu");
+            backdrop.hidden = true;
+            document.documentElement.classList.remove("mobile-nav-open");
+            if (restoreFocus) toggle.focus({ preventScroll: true });
+        };
+
+        const openMenu = () => {
+            if (!mobileViewport.matches) return;
+            panel.classList.add("show");
+            toggle.setAttribute("aria-expanded", "true");
+            toggle.setAttribute("aria-label", "Close navigation menu");
+            backdrop.hidden = false;
+            document.documentElement.classList.add("mobile-nav-open");
+            const firstLink = panel.querySelector("a[href], button:not(:disabled)");
+            if (firstLink) firstLink.focus({ preventScroll: true });
+        };
+
+        toggle.addEventListener("click", () => {
+            if (panel.classList.contains("show")) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        backdrop.addEventListener("click", () => closeMenu());
+
+        document.addEventListener("click", event => {
+            if (panel.classList.contains("show") &&
+                !panel.contains(event.target) &&
+                !toggle.contains(event.target)) {
+                closeMenu();
+            }
+        });
+
+        document.addEventListener("keydown", event => {
+            if (!panel.classList.contains("show")) return;
+
+            if (event.key === "Escape") {
+                event.preventDefault();
+                closeMenu(true);
+                return;
+            }
+
+            if (event.key === "Tab") {
+                const focusable = [toggle, ...panel.querySelectorAll("a[href], button:not(:disabled)")]
+                    .filter(element => element.getClientRects().length > 0);
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
+            }
+        });
+
+        panel.querySelectorAll("a[href]").forEach(link => {
+            link.addEventListener("click", () => closeMenu());
+        });
+
+        mobileViewport.addEventListener("change", event => {
+            if (!event.matches) closeMenu();
+        });
+    },
+
     // Highlight active link in navbar
     highlightActiveNav: function() {
         const currentPath = window.location.pathname.split("/").pop() || "index.html";
         document.querySelectorAll(".main-navbar .nav-link").forEach(link => {
-            const linkPath = link.pathname.split("/").pop() || "index.html";
+            const linkPath = link.dataset.page || (link instanceof HTMLAnchorElement ? link.pathname.split("/").pop() || "index.html" : "");
             if (linkPath === currentPath) {
                 link.classList.add("active");
             } else {
@@ -195,7 +280,7 @@ const HilltopUI = {
                 const budget = document.getElementById("heroBudget")?.value || "";
                 const keyword = document.getElementById("heroKeyword")?.value || "";
 
-                const targetPage = purpose === "rent" ? "rent.html" : "buy.html";
+                const targetPage = purpose === "rent" ? "/rent.html" : "/buy.html";
                 const params = new URLSearchParams();
                 if (city) params.set("city", city);
                 if (propType) params.set("type", propType);
@@ -635,8 +720,8 @@ const HilltopUI = {
                             <h4 class="fw-bold text-dark">No Saved Properties Yet</h4>
                             <p class="text-muted mb-4">Click the heart icon on any property to save it to your favourites list for quick comparison.</p>
                             <div class="d-flex justify-content-center gap-3">
-                                <a href="buy.html" class="btn btn-primary rounded-pill px-4">Browse Properties for Sale</a>
-                                <a href="rent.html" class="btn btn-outline-primary rounded-pill px-4">Browse Rentals</a>
+                                <a href="/buy.html" class="btn btn-primary rounded-pill px-4">Browse Properties for Sale</a>
+                                <a href="/rent.html" class="btn btn-outline-primary rounded-pill px-4">Browse Rentals</a>
                             </div>
                         </div>
                     </div>
@@ -666,8 +751,8 @@ const HilltopUI = {
                         <i class="bi bi-shield-lock display-3 text-warning mb-3"></i>
                         <h4 class="fw-bold">Sign In Required</h4>
                         <p class="text-muted mb-4">Please log in to view your profile, saved properties, recent visits, and submitted demo listings.</p>
-                        <a href="login.html" class="btn btn-primary rounded-pill px-4 me-2">Log In</a>
-                        <a href="register.html" class="btn btn-outline-primary rounded-pill px-4">Create Account</a>
+                        <a href="/login.html" class="btn btn-primary rounded-pill px-4 me-2">Log In</a>
+                        <a href="/register.html" class="btn btn-outline-primary rounded-pill px-4">Create Account</a>
                     </div>
                 `;
             }
@@ -695,7 +780,7 @@ const HilltopUI = {
             if (favBadge) favBadge.textContent = favProps.length;
 
             if (favProps.length === 0) {
-                favContainer.innerHTML = `<div class="p-4 text-center text-muted">You have not saved any properties yet. <a href="buy.html">Explore now</a>.</div>`;
+                favContainer.innerHTML = `<div class="p-4 text-center text-muted">You have not saved any properties yet. <a href="/buy.html">Explore now</a>.</div>`;
             } else {
                 favContainer.innerHTML = favProps.slice(0, 4).map(p => window.PropertyStore.renderPropertyCard(p)).join("");
             }
@@ -728,7 +813,7 @@ const HilltopUI = {
                         <i class="bi bi-house-add display-4 text-muted mb-2"></i>
                         <h6 class="fw-bold">You haven't listed any demo properties yet</h6>
                         <p class="text-muted small mb-3">Want to list your apartment, house, or land? Submissions are stored locally in your browser.</p>
-                        <a href="sell.html" class="btn btn-primary btn-sm rounded-pill px-3">List Your Property Free</a>
+                        <a href="/sell.html" class="btn btn-primary btn-sm rounded-pill px-3">List Your Property Free</a>
                     </div>
                 `;
             } else {
@@ -748,7 +833,7 @@ const HilltopUI = {
                                         <h6 class="card-title fw-bold text-truncate mt-1 mb-1">${p.title}</h6>
                                         <p class="card-text text-muted small mb-2"><i class="bi bi-geo-alt"></i> ${p.locality}, ${p.city}</p>
                                         <div class="d-flex gap-2">
-                                            <a href="property-details.html?id=${p.id}" class="btn btn-sm btn-outline-primary py-0 px-2 rounded-pill fs-xs">View</a>
+                                            <a href="/property-details.html?id=${p.id}" class="btn btn-sm btn-outline-primary py-0 px-2 rounded-pill fs-xs">View</a>
                                             <button class="btn btn-sm btn-outline-danger py-0 px-2 rounded-pill fs-xs" onclick="HilltopUI.deleteDemoListing('${p.id}')">Delete</button>
                                         </div>
                                     </div>

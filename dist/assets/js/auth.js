@@ -199,9 +199,9 @@ const AuthStore = {
                             <small class="text-muted">${user.email}</small>
                             <span class="badge bg-primary-subtle text-primary border border-primary-subtle d-inline-block mt-1">${user.role} Account</span>
                         </li>
-                        <li><a class="dropdown-item py-2" href="dashboard.html"><i class="bi bi-speedometer2 text-primary me-2"></i>My Dashboard</a></li>
-                        <li><a class="dropdown-item py-2" href="favourites.html"><i class="bi bi-heart text-danger me-2"></i>Saved Favourites</a></li>
-                        <li><a class="dropdown-item py-2" href="sell.html"><i class="bi bi-plus-circle text-success me-2"></i>List New Property</a></li>
+                        <li><a class="dropdown-item py-2" href="/dashboard.html"><i class="bi bi-speedometer2 text-primary me-2"></i>My Dashboard</a></li>
+                        <li><a class="dropdown-item py-2" href="/favourites.html"><i class="bi bi-heart text-danger me-2"></i>Saved Favourites</a></li>
+                        <li><a class="dropdown-item py-2" href="/sell.html"><i class="bi bi-plus-circle text-success me-2"></i>List New Property</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item py-2 text-danger" href="javascript:void(0)" onclick="AuthStore.handleLogoutClick()"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>
                     </ul>
@@ -210,10 +210,10 @@ const AuthStore = {
         } else {
             container.innerHTML = `
                 <div class="d-flex align-items-center gap-2">
-                    <a href="login.html" class="btn btn-outline-light rounded-pill px-3 py-1 fw-medium fs-sm">
+                    <a href="/login.html" class="btn btn-outline-light rounded-pill px-3 py-1 fw-medium fs-sm">
                         <i class="bi bi-person me-1"></i> Login
                     </a>
-                    <a href="register.html" class="btn btn-primary rounded-pill px-3 py-1 fw-medium fs-sm shadow-sm">
+                    <a href="/register.html" class="btn btn-primary rounded-pill px-3 py-1 fw-medium fs-sm shadow-sm">
                         Register
                     </a>
                 </div>
@@ -227,7 +227,7 @@ const AuthStore = {
             window.HilltopUI.showToast("You have been signed out successfully.", "success");
         }
         setTimeout(() => {
-            window.location.href = "index.html";
+            window.location.href = "/index.html";
         }, 600);
     }
 };

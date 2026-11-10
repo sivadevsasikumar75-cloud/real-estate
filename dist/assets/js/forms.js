@@ -288,7 +288,7 @@ const FormHandlers = {
                     modal.show();
                 } else {
                     alert(`Success! Your property has been saved to your local demo listings with ID: ${saved.id}. You can view it on the Buy/Rent page or in your Dashboard.`);
-                    window.location.href = `property-details.html?id=${saved.id}`;
+                    window.location.href = `/property-details.html?id=${saved.id}`;
                 }
                 form.reset();
                 if (previewContainer) previewContainer.innerHTML = "";
@@ -360,21 +360,19 @@ const FormHandlers = {
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = originalText;
                 }
-                const ticketId = "HT-INQ-" + Math.floor(100000 + Math.random() * 900000);
                 const alertBox = document.getElementById("contactFormAlert");
                 if (alertBox) {
-                    alertBox.className = "alert alert-success d-flex align-items-center gap-3 shadow-sm rounded-3 mt-3";
+                    alertBox.className = "alert alert-info d-flex align-items-center gap-3 shadow-sm rounded-3 mt-3";
                     alertBox.innerHTML = `
-                        <i class="bi bi-check-circle-fill fs-3 text-success"></i>
+                        <i class="bi bi-info-circle-fill fs-3 text-primary"></i>
                         <div>
-                            <strong>Demo Inquiry Sent!</strong><br>
-                            Reference: <span class="badge bg-success font-monospace">${ticketId}</span><br>
-                            <small class="text-muted">Thank you, ${name.value.trim()}. In a live deployment, our Indian relationship manager would call you at ${phone.value.trim()} within 2 hours.</small>
+                            <strong>Demo only: message not sent</strong><br>
+                            <small class="text-muted">Thank you, ${name.value.trim()}. This static website has no contact service, so your message was not transmitted.</small>
                         </div>
                     `;
                     alertBox.classList.remove("d-none");
                 } else if (window.HilltopUI && window.HilltopUI.showToast) {
-                    window.HilltopUI.showToast(`Message sent! Reference: ${ticketId}`, "success");
+                    window.HilltopUI.showToast("Demo only: no contact service is configured, so your message was not sent.", "info");
                 }
                 form.reset();
             }, 800);
@@ -417,7 +415,7 @@ const FormHandlers = {
                     window.HilltopUI.showToast(res.message, "success");
                 }
                 setTimeout(() => {
-                    window.location.href = "dashboard.html";
+                    window.location.href = "/dashboard.html";
                 }, 600);
             } else {
                 if (errorAlert) {
@@ -506,7 +504,7 @@ const FormHandlers = {
                     window.HilltopUI.showToast(res.message, "success");
                 }
                 setTimeout(() => {
-                    window.location.href = "dashboard.html";
+                    window.location.href = "/dashboard.html";
                 }, 700);
             } else {
                 if (errorAlert) {
@@ -557,8 +555,8 @@ const FormHandlers = {
 
             const alertBox = document.getElementById("inquirySuccessAlert");
             if (alertBox) {
-                alertBox.className = "alert alert-success mt-3 small p-2";
-                alertBox.innerHTML = `<strong>Inquiry Sent!</strong> The property owner/agent will connect with you on ${phone.value.trim()} shortly.`;
+                alertBox.className = "alert alert-info mt-3 small p-2";
+                alertBox.textContent = "Demo only: this inquiry was not sent because no contact service is configured.";
                 alertBox.classList.remove("d-none");
             }
             form.reset();
@@ -573,9 +571,7 @@ const FormHandlers = {
                 const emailInput = this.querySelector('input[type="email"]');
                 if (emailInput && FormHandlers.isValidEmail(emailInput.value)) {
                     if (window.HilltopUI && window.HilltopUI.showToast) {
-                        window.HilltopUI.showToast("Subscribed! You will receive weekly Indian property market trends.", "success");
-                    } else {
-                        alert("Subscribed! You will receive weekly Indian property market trends.");
+                        window.HilltopUI.showToast("Newsletter signup is not connected on this demo site. Your email was not saved.", "info");
                     }
                     emailInput.value = "";
                 } else if (emailInput) {

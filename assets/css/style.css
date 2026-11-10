@@ -561,7 +561,7 @@ header.bg-navy {
     transition: var(--ht-transition);
 }
 
-.footer-social-icon:hover {
+a.footer-social-icon:hover {
     background-color: var(--ht-secondary);
     color: #FFFFFF;
     transform: translateY(-2px);

@@ -38,7 +38,7 @@ Developed purely with **HTML5, CSS3, Vanilla JavaScript, and Bootstrap 5**, comp
   - `properties.js`: Dynamic property data store with 16+ realistic Indian properties, search/filter algorithms, and currency formatters.
   - `auth.js`: Client-side demo authentication, session management, and role-based profiles (Buyer, Seller, Tenant).
   - `forms.js`: Indian mobile number validation (`+91`), email validation, image file previews, demo inquiry generation, and sell form processing.
-  - `main.js`: Sticky navigation, active link highlighting, favourites management, toast notifications, and URL parameter routing.
+  - `main.js`: Sticky navigation, an accessible floating mobile navigation panel, active link highlighting, favourites management, toast notifications, and URL parameter routing.
 - **Client-Side Persistence:** `localStorage` for favourites, recently viewed properties, custom demo property listings, and user authentication sessions.
 
 ---
@@ -125,7 +125,7 @@ The original Django templates and website source under `website/` are retained a
 
 ## 7. Static site behavior
 
-Property search, favourites, forms, and demo accounts run in the browser. Login and registration data stored in `localStorage` are demonstration-only and are not secure authentication. No server-side form submission or account service is configured.
+Property search, favourites, demo listings, and demo accounts run in the browser. Login and registration data stored in `localStorage` are demonstration-only and are not secure authentication. Contact, property inquiry, and newsletter forms validate locally but do not send or store submissions because no backend service is configured.
 
 ## 8. Deploy the static website to Vercel
 
